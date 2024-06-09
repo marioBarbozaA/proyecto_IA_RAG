@@ -1,0 +1,10 @@
+langchain
+langchain-community
+pypdf
+python-dotenv
+openai
+chromadb 
+tiktoken
+langchain-openai
+transformers
+torch
