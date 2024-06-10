@@ -4,7 +4,6 @@ from RagOllama import RagApi
 #_____________________________________
 from langchain.prompts import PromptTemplate
 from langchain_community.llms import Ollama  
-from langchain_openai import ChatOpenAI
 from langchain.chains import LLMChain
 import csv
 
