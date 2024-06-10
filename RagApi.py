@@ -1,6 +1,5 @@
 import os
 import sys 
-import openai 
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_openai import OpenAI 
 from langchain.retrievers import ContextualCompressionRetriever
@@ -17,7 +16,6 @@ from langchain_community.llms import Ollama
 
 sys.path.append(os.path.join(os.path.dirname(__file__), '..')) # Add parent directory to path variable
 load_dotenv(find_dotenv()) # Load .env file
-openai.api_key = os.getenv('OPENAI_API_KEY') # Set OpenAI API key
 
 class RagApi: 
     def __init__(self, docs_dir='docs', db_dir='chroma', load_vectorstore=False):
@@ -39,7 +37,9 @@ class RagApi:
             self.vecdb = self.create_db(chunks, embeddings, db_dir) # create vectorstore
 
         self.retriever = self.create_retriever()
-        self.llm = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0) # TODO: change answering model to llama
+        self.llm = Ollama(
+            model="llama3:8b"
+        ) # TODO: change answering model to llama
         self.chain = self.create_chain() 
 
     def create_chain(self): 

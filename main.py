@@ -1,6 +1,6 @@
 #Cambiar el RagApi dependiendo de cual se quiera usar
 #from RagApi import RagApi 
-from RagOllama import RagApi
+from RagApi import RagApi
 #_____________________________________
 from langchain.prompts import PromptTemplate
 from langchain_community.llms import Ollama  
